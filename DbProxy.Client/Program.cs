@@ -1,32 +1,67 @@
-﻿using DbProxy.Client.Providers;
-using DbProxy.Client.Resolvers;
+﻿using System.Net;
+using System.Net.Security;
+using System.Net.Sockets;
+using System.Text;
+using System.Text.Json;
+using DbProxy.Client.Providers;
+using DbProxy.Shared.Payloads;
+using Org.BouncyCastle.Math.EC.Rfc8032;
 
 namespace DbProxy.Client;
 
 class Program
 {
-    /// <summary>
-    /// DbProxy connect --remote-host localhost --remote-port 5432 --local-port 5433 --token XYZ
-    /// </summary>
-    /// <param name="args"></param>
     public static async Task Main(string[] args)
     {
-        if (args.Length == 0)
+        try
         {
-            Console.WriteLine("Usage: DbProxy <command> [options]");
-            return;
+            var remoteHost = CommandArgsValueProvider.GetValue(args, "--remote-host");
+            var remotePort = CommandArgsValueProvider.GetValue(args, "--remote-port");
+            var localPort = CommandArgsValueProvider.GetValue(args, "--local-port", remotePort);
+            var sshKeyPath = CommandArgsValueProvider.GetValue(args, "--ssh");
+            var requester = CommandArgsValueProvider.GetValue(args, "--requester");
+
+            Console.WriteLine($"Connecting to server... {remoteHost}:{remotePort} to local port {localPort}");
+
+            using var tcp = new TcpClient();
+            var localEndpoint = new IPEndPoint(IPAddress.Any, int.Parse(localPort));
+            tcp.Client.Bind(localEndpoint);
+
+            await tcp.ConnectAsync(remoteHost, int.Parse(remotePort));
+
+            await using var sslStream = new SslStream(tcp.GetStream(), false, (_, _, _, _) => true);
+            await sslStream.AuthenticateAsClientAsync(remoteHost);
+            Console.WriteLine("TLS Handshake complete with server.");
+
+            var payload = new ClientPayload
+            {
+                Requester = requester,
+                Payload = Guid.NewGuid().ToString()
+            };
+
+            var privateKeyBytes = await File.ReadAllBytesAsync(sshKeyPath);
+            var payloadBytesToSign = Encoding.UTF8.GetBytes(payload.Payload);
+            var signature = new byte[Ed25519.SignatureSize];
+            Ed25519.Sign(privateKeyBytes, 0, null, payloadBytesToSign, 0, payloadBytesToSign.Length, signature, 0);
+
+            payload.Signature = Convert.ToBase64String(signature);
+
+            string json = JsonSerializer.Serialize(payload);
+            byte[] payloadBytes = Encoding.UTF8.GetBytes(json);
+            await sslStream.WriteAsync(payloadBytes);
+
+            var buffer = new byte[1024];
+            var bytesRead = await sslStream.ReadAsync(buffer);
+            var response = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+            Console.WriteLine($"Server response: {response}");
         }
-
-        var command = args[0].ToLower();
-        var token = CommandArgsValueProvider.GetValue(args, "--token");
-
-        var commandTask = command switch
+        catch (IOException)
         {
-            "connect" => RemoteTcpConnectionResolver.ResolveRemoteConnectionAsync(args, command),
-            "proxy" => RemoteTcpConnectionResolver.ResolveRemoteConnectionAsync(args, token),
-            _ => throw new ArgumentException($"Unknown command: {command}")
-        };
-
-        await commandTask;
+            Console.WriteLine("It seems that the server is not running. Please make sure it is running and try again.");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Error: {e.Message}");
+        }
     }
 }

@@ -296,6 +296,16 @@
             "rid": "win"
           }
         }
+      },
+      "DbProxy.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/DbProxy.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DbProxy.Shared.dll": {}
+        }
       }
     }
   },
@@ -785,10 +795,17 @@
         "system.security.cryptography.pkcs.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "DbProxy.Shared/1.0.0": {
+      "type": "project",
+      "path": "../DbProxy.Shared/DbProxy.Shared.csproj",
+      "msbuildProject": "../DbProxy.Shared/DbProxy.Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "BouncyCastle.Cryptography >= 2.6.1",
+      "DbProxy.Shared >= 1.0.0",
       "MailKit >= 4.14.1",
       "Microsoft.Extensions.Configuration >= 9.0.10",
       "Microsoft.Extensions.Configuration.Binder >= 9.0.10",
@@ -821,7 +838,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Codesparks\\DbProxy\\DbProxy\\DbProxy.Shared\\DbProxy.Shared.csproj": {
+              "projectPath": "C:\\Codesparks\\DbProxy\\DbProxy\\DbProxy.Shared\\DbProxy.Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -840,6 +861,10 @@
       "net9.0": {
         "targetAlias": "net9.0",
         "dependencies": {
+          "BouncyCastle.Cryptography": {
+            "target": "Package",
+            "version": "[2.6.1, )"
+          },
           "MailKit": {
             "target": "Package",
             "version": "[4.14.1, )"
