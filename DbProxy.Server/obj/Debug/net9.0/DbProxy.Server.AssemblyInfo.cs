@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DbProxy.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ba395c25734ac54adc11cee36280e869ede0e630")]
 [assembly: System.Reflection.AssemblyProductAttribute("DbProxy.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DbProxy.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

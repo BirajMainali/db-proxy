@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "BzXXRp93dU0=",
+  "dgSpecHash": "yngnuoZd3Rg=",
   "success": true,
   "projectFilePath": "C:\\Codesparks\\DbProxy\\DbProxy\\DbProxy.Server\\DbProxy.Server.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,8 @@
     "C:\\Users\\Biraj Mainali\\.nuget\\packages\\microsoft.extensions.configuration.binder\\9.0.10\\microsoft.extensions.configuration.binder.9.0.10.nupkg.sha512",
     "C:\\Users\\Biraj Mainali\\.nuget\\packages\\microsoft.extensions.configuration.fileextensions\\9.0.10\\microsoft.extensions.configuration.fileextensions.9.0.10.nupkg.sha512",
     "C:\\Users\\Biraj Mainali\\.nuget\\packages\\microsoft.extensions.configuration.json\\9.0.10\\microsoft.extensions.configuration.json.9.0.10.nupkg.sha512",
+    "C:\\Users\\Biraj Mainali\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\9.0.10\\microsoft.extensions.dependencyinjection.9.0.10.nupkg.sha512",
+    "C:\\Users\\Biraj Mainali\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.10\\microsoft.extensions.dependencyinjection.abstractions.9.0.10.nupkg.sha512",
     "C:\\Users\\Biraj Mainali\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\9.0.10\\microsoft.extensions.fileproviders.abstractions.9.0.10.nupkg.sha512",
     "C:\\Users\\Biraj Mainali\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\9.0.10\\microsoft.extensions.fileproviders.physical.9.0.10.nupkg.sha512",
     "C:\\Users\\Biraj Mainali\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\9.0.10\\microsoft.extensions.filesystemglobbing.9.0.10.nupkg.sha512",
@@ -18,10 +20,10 @@
     "C:\\Users\\Biraj Mainali\\.nuget\\packages\\mimekit\\4.14.0\\mimekit.4.14.0.nupkg.sha512",
     "C:\\Users\\Biraj Mainali\\.nuget\\packages\\system.formats.asn1\\8.0.1\\system.formats.asn1.8.0.1.nupkg.sha512",
     "C:\\Users\\Biraj Mainali\\.nuget\\packages\\system.security.cryptography.pkcs\\8.0.1\\system.security.cryptography.pkcs.8.0.1.nupkg.sha512",
-    "C:\\Users\\Biraj Mainali\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.10\\microsoft.aspnetcore.app.ref.9.0.10.nupkg.sha512",
-    "C:\\Users\\Biraj Mainali\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\9.0.10\\microsoft.netcore.app.host.win-x64.9.0.10.nupkg.sha512",
     "C:\\Users\\Biraj Mainali\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.10\\microsoft.netcore.app.ref.9.0.10.nupkg.sha512",
-    "C:\\Users\\Biraj Mainali\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.10\\microsoft.windowsdesktop.app.ref.9.0.10.nupkg.sha512"
+    "C:\\Users\\Biraj Mainali\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.10\\microsoft.windowsdesktop.app.ref.9.0.10.nupkg.sha512",
+    "C:\\Users\\Biraj Mainali\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.10\\microsoft.aspnetcore.app.ref.9.0.10.nupkg.sha512",
+    "C:\\Users\\Biraj Mainali\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\9.0.10\\microsoft.netcore.app.host.win-x64.9.0.10.nupkg.sha512"
   ],
   "logs": []
 }
