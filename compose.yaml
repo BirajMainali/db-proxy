@@ -1,0 +1,13 @@
+﻿services:
+  dbproxy.server:
+    image: dbproxy.server
+    build:
+      context: .
+      dockerfile: DbProxy.Server/Dockerfile
+
+  dbproxy.client:
+    image: dbproxy.client
+    build:
+      context: .
+      dockerfile: DbProxy.Client/Dockerfile
+
